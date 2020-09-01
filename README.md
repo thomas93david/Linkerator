@@ -19,7 +19,7 @@ First, clone this repo locally, then remove the current `.git` folder. Follow th
 ```bash
 rm -rf .git
 
-git init
+i
 ```
 
 Then go to GitHub, create a new repository, and add that remote to this local repo.
