@@ -1,20 +1,6 @@
 .App {
-  background-color: aqua;
-  display: grid;
-  justify-content: center;
-  /* align-content: center; */
-  margin: 24px;
-}
-
-.App .App-Header {
-  text-align: center;
-  margin: 36px;
-}
-
-.App .App-container {
-  text-align: center;
-}
-
-.App .App-container {
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  background-color: #3d6cb9;
+  height: 100%;
 }
