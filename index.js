@@ -1,12 +1,12 @@
 //import bootstrap
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 //import react
 //unclear if we really need these since they are already installed by npm
-import React from 'react';
-import ReactDOM from 'recat-dom';
-import ReactScripts from 'react-scripts';
+//import React from 'react';
+//import ReactDOM from 'recat-dom';
+//import ReactScripts from 'react-scripts';
 
 //think we also need to import Router from react - router
 //import Router from 'react-router';
