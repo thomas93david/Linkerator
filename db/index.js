@@ -12,8 +12,8 @@ async function createLink({
 }) {
   try {
     const { rows: [ link ] } = await client.query(`
-    INSERT INTO links (url, "clickCount", comment,)
-    VALUES ($1, $2, $3)
+    INSERT INTO links (url, "clickCount", comment, "dateShared")
+    VALUES ($1, $2, $3, NOW())
     ON CONFLICT (url) DO NOTHING
     RETURNING *;
     `, [url, clickCount, comment]);
