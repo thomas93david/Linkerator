@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { getSomething } from "../api";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import "./App.css";
@@ -13,6 +12,8 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+
+import { getSomething } from "../api";
 
 const App = () => {
   const [message, setMessage] = useState("");
@@ -33,6 +34,8 @@ const App = () => {
         <SearchBar />
         <SearchResults />
       </div>
+      <div className="api-container"></div>
+      <h2>{message}</h2>
     </Router>
   );
 };

@@ -39,7 +39,12 @@ const SearchBar = ({ setResults }) => {
           <Form>
             <Form.Group>
               <Form.Label>Welcome! Begin by searching ANY url</Form.Label>
-              <Form.Control type="text" placeholder="url link" />
+              <Form.Control
+                type="text"
+                placeholder="url"
+                value={url}
+                onChange={urlNameChange}
+              />
             </Form.Group>
           </Form>
           <Button type="submit" variant="primary" size="lg">
@@ -47,7 +52,6 @@ const SearchBar = ({ setResults }) => {
           </Button>
         </Card.Body>
       </Card>
-      <div className="api-container">{/* <h2>{message}</h2> */}</div>
     </div>
   );
 };

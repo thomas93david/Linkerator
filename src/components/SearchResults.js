@@ -14,8 +14,8 @@ import { getSomething } from "../api";
 
 const SearchResults = ({}) => {
   return (
-    <div class="results">
-      <div class="Link-List">
+    <div className="results">
+      <div className="Link-List">
         <Card
           style={{
             textAlign: "center",

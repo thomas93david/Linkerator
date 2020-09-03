@@ -6,4 +6,9 @@ apiRouter.get("/", (req, res, next) => {
   });
 });
 
+apiRouter.get("/links", (req, res, next) => {
+  res.send({
+    message: "Links coming soon",
+  });
+});
 module.exports = apiRouter;
