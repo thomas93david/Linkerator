@@ -58,37 +58,37 @@ async function populateInitialData() {
     await createLink({
       url:  "www.google.com",
       clickCount: 1,              //new links always start with click count 1 (should this be 0?)
-      comment: "Some Comment 1",
+      comment: "Some Comment 1"
     });
     await createLink({
       url:  "www.espn.com",
       clickCount: 1,              
-      comment: "Some Comment 2",
+      comment: "Some Comment 2"
     });
     await createLink({
       url:  "www.cnn.com",
       clickCount: 1,              
-      comment: "Some Comment 1",
+      comment: "Some Comment 1"
     });
     await createLink({
       url:  "www.vox.com",
       clickCount: 1,              
-      comment: "Some Comment 1",
+      comment: "Some Comment 1"
     });
     await createLink({
       url:  "www.duckduckgo.com",
       clickCount: 1,              
-      comment: "Some Comment 1",
+      comment: "Some Comment 1"
     });
     await createLink({
       url:  "www.sport1.de",
       clickCount: 1,              
-      comment: "Some Comment 1",
+      comment: "Some Comment 1"
     });
     await createLink({
       url:  "www.der-postillon.com",
       clickCount: 1,              
-      comment: "Some Comment 1",
+      comment: "Some Comment 1"
     });
     console.log ("Initial Links created!");
   } catch (error) {
