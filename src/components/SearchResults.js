@@ -13,6 +13,16 @@ import {
 import { getSomething } from "../api";
 
 const SearchResults = ({}) => {
+  const [message, setMessage] = useState("");
+  useEffect(() => {
+    getSomething()
+      .then((response) => {
+        setMessage(response.message);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+      });
+  });
   return (
     <div className="results">
       <div className="Link-List">
@@ -33,6 +43,8 @@ const SearchResults = ({}) => {
               </Form.Group>
             </Form>
           </Card.Body>
+          <div className="api-container"></div>
+          <h2>{message}</h2>
         </Card>
       </div>
     </div>

@@ -33,7 +33,7 @@ const SearchBar = ({ setResults }) => {
           width: "600px",
         }}
       >
-        <Card.Img src="https://picsum.photos/550/200" />
+        <Card.Img src="https://picsum.photos/550/350" />
         <Card.Body>
           <Card.Title style={{ fontSize: "36px" }}>Linkerator</Card.Title>
           <Form>
