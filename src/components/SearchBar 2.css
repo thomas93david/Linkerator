@@ -1,0 +1,20 @@
+.link-search {
+  background-color: aqua;
+  display: grid;
+  justify-content: center;
+  /* align-content: center; */
+  margin: 24px;
+}
+
+.link-search {
+  text-align: center;
+  margin: 36px;
+}
+
+.link-search .api-container {
+  text-align: center;
+}
+
+.link-search .api-container {
+  text-align: center;
+}
