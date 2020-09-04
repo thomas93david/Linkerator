@@ -10,7 +10,6 @@ const {
   getAllLinks,
   // other db methods
 } = require("./index");
-const { NavDropdown } = require("react-bootstrap");
 
 async function buildTables() {
   //I have await client.query here - may not be needed as these are run with a .then()

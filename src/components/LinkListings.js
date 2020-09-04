@@ -3,16 +3,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./LinkListings.css";
 
 import { Container, Col, Row } from "react-bootstrap";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Switch,
+//   Redirect,
+// } from "react-router-dom";
 
-import { getSomething } from "../api";
+// import { getSomething } from "../api";
 
-import Links from "./Links";
+// import Links from "./Links";
 
 const LinkListings = ({ results }) => {
   return (
