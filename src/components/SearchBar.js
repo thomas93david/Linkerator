@@ -12,44 +12,50 @@ import {
 
 import { getSomething } from "../api";
 
-const SearchBar = ({ setResults }) => {
-  const [url, setUrl] = useState("");
-
+const SearchBar = ({ setResults, search, setSearchInput }) => {
   const urlNameChange = (event) => {
-    setUrl(event.target.value);
+    setSearchInput(event.target.value);
   };
 
   async function searchUrlResult(event) {
     event.preventDefault();
-    const url = await getSomething({});
-    setResults(url);
+    setSearchInput(event.target.value);
   }
+
   return (
     <div className="link-search">
       <Card
         style={{
           color: "black",
           backgroundColor: "#00fff0",
-          width: "600px",
+          width: "900px",
         }}
       >
-        <Card.Img src="https://picsum.photos/550/350" />
+        <Card.Title
+          style={{
+            fontSize: "36px",
+            paddingTop: "9px",
+          }}
+        >
+          {" "}
+          Linkerator
+        </Card.Title>
+        <Card.Img
+        // style={{ padding: "18px" }}
+        // src="https://picsum.photos/800/150"
+        />
         <Card.Body>
-          <Card.Title style={{ fontSize: "36px" }}>Linkerator</Card.Title>
-          <Form>
+          <Form onSubmit={setSearchInput}>
             <Form.Group>
               <Form.Label>Welcome! Begin by searching ANY url</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="url"
-                value={url}
+                placeholder="text"
+                value={search}
                 onChange={urlNameChange}
               />
             </Form.Group>
           </Form>
-          <Button type="submit" variant="primary" size="lg">
-            Link
-          </Button>
         </Card.Body>
       </Card>
     </div>

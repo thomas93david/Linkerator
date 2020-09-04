@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
+import LinkListings from "./LinkListings";
 import "./App.css";
 
 import {
@@ -14,11 +15,14 @@ import {
 import { getSomething } from "../api";
 
 const App = () => {
+  const [search, setSearchInput] = useState("");
+  const [results, setResults] = useState([]);
   return (
     <Router>
       <div className="App">
-        <SearchBar />
-        <SearchResults />
+        <SearchBar search={search} setSearchInput={setSearchInput} />
+        <SearchResults search={search} setSearchInput={setSearchInput} />
+        <LinkListings />
       </div>
     </Router>
   );
