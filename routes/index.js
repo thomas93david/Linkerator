@@ -11,10 +11,7 @@ const linksRouter = require("./links");
 apiRouter.use("/links", linksRouter);
 
 const tagsRouter = require("./tags");
-apiRouter.use("./tags", tagsRouter);
-
-const link_tagRouter = require("./link_tag");
-apiRouter.use("./link_tag", link_tagRouter);
+apiRouter.use("/tags", tagsRouter);
 
 apiRouter.use((error, req, res, next) => {
   res.send(error);

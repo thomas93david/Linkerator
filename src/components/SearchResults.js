@@ -62,8 +62,6 @@ const SearchResults = ({ search, setSearchInput }) => {
               </Form.Row>
             </Form>
           </Card.Body>
-
-          {/* <h2>{message}</h2> */}
         </Card>
       </div>
     </div>
