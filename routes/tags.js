@@ -9,4 +9,5 @@ tagsRouter.use((req, res, next) => {
   next();
 });
 
+tagsRouter.get("");
 module.exports = tagsRouter;

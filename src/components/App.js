@@ -4,6 +4,8 @@ import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import LinkListings from "./LinkListings";
 import "./App.css";
+import { getLinks } from "../api";
+import { getSomething } from "../api";
 
 import {
   BrowserRouter as Router,
@@ -11,8 +13,6 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-
-import { getSomething } from "../api";
 
 const App = () => {
   const [search, setSearchInput] = useState("");
@@ -22,7 +22,7 @@ const App = () => {
       <div className="App">
         <SearchBar search={search} setSearchInput={setSearchInput} />
         <SearchResults search={search} setSearchInput={setSearchInput} />
-        <LinkListings />
+        <LinkListings results={results} setResults={setResults} />
       </div>
     </Router>
   );

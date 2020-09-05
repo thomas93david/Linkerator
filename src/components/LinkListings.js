@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./LinkListings.css";
 
-import { Container, Col, Row } from "react-bootstrap";
+// import { getAllLinks } from "../../db";
+import { Button, Container, Col, Row, Form } from "react-bootstrap";
 // import {
 //   BrowserRouter as Router,
 //   Route,
@@ -10,11 +11,32 @@ import { Container, Col, Row } from "react-bootstrap";
 //   Redirect,
 // } from "react-router-dom";
 
-// import { getSomething } from "../api";
+import { getLinks } from "../api";
 
-// import Links from "./Links";
+import Links from "./Links";
 
-const LinkListings = ({ results }) => {
+const LinkListings = ({ setPreview }) => {
+  const [id, setId] = useState("");
+  const [url, setUrl] = useState("");
+  const [tags, setTags] = useState("");
+  const [comment, setComment] = useState("");
+  // const data = getLinks();
+  // console.log(data);
+  // results = getLinks();
+  // console.log(results);
+
+  async function previewLinkResult(event) {
+    event.preventDefault();
+
+    const dummyLinks = await getLinks({
+      id,
+      url,
+      tags,
+      comment,
+    });
+    setPreview(dummyLinks);
+  }
+
   return (
     <div className="link-container">
       <Container
@@ -28,11 +50,14 @@ const LinkListings = ({ results }) => {
         <Row>
           <Col>
             <p>This is where we will filter and map the results </p>
-            {/* {results.map((result) => (
-              <Links key={result.id} />
-            ))} */}
+            {setPreview.map(({ id, url, tags, comment }) => (
+              <Links key={id} />
+            ))}
           </Col>
         </Row>
+        <Form onSubmit={previewLinkResult}>
+          <Button type="submit"> Preview</Button>
+        </Form>
       </Container>
     </div>
   );
