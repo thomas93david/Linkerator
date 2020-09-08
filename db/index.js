@@ -1,11 +1,11 @@
-// Connect to DB
+// CONNECT TO DB
 const { Client } = require("pg");
 const DB_NAME = "Linkerator";
 const DB_URL =
   process.env.DATABASE_URL || `postgres://localhost:5432/${DB_NAME}`;
 const client = new Client(DB_URL);
 
-// database methods
+// DATABASE METHODS
 
 async function createLink({ url, clickCount, comment }) {
   try {
@@ -117,5 +117,4 @@ module.exports = {
   createTag,
   addTagToLink,
   getAllLinks,
-  // db methods
 };

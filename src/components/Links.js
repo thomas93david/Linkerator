@@ -1,18 +1,26 @@
 import React from "react";
-import "./Links.css";
 import { Card } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./Links.css";
 
-const Links = ({ id, url, tags, comment }) => {
+const Links = ({ link, comment, clickCount }) => {
   return (
     <div className="Links">
-      <Card className="text-center">
-        <Card.Header>{id}</Card.Header>
+      <Card
+        className="text-center"
+        style={{
+          margin: "9px",
+          width: "250px",
+          height: "200px",
+          color: "green",
+        }}
+      >
         <Card.Body>
-          <Card.Title>{url}</Card.Title>
-          <Card.Text>{comment}</Card.Text>
+          <Card.Title>
+            <h2>{link}</h2>
+          </Card.Title>
+          <p>{comment}</p>
+          <p>{clickCount}</p>
         </Card.Body>
-        <Card.Footer className="text-muted">{tags}</Card.Footer>
       </Card>
     </div>
   );

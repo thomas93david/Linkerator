@@ -13,17 +13,14 @@ const {
 
 async function buildTables() {
   //I have await client.query here - may not be needed as these are run with a .then()
+  client.connect();
   try {
-    client.connect();
     console.log("Dropping tables ...");
-    // drop tables in correct order
     await client.query(`
       DROP TABLE IF EXISTS link_tag;
       DROP TABLE IF EXISTS links;
       DROP TABLE IF EXISTS tags;
     `);
-    // build tables in correct order
-    //do we want to make varchar > 255 for url in links???
 
     //timestamp needs to be added on link addition, not on table build
 
@@ -58,7 +55,7 @@ async function populateInitialData() {
     console.log("Entering initial data set for URL's (Links).");
     await createLink({
       url: "www.google.com",
-      clickCount: 1, //new links always start with click count 1 (should this be 0?)
+      clickCount: 1,
       comment: "Some Comment 1",
     });
     await createLink({

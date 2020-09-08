@@ -14,8 +14,6 @@ linksRouter.get("/", async (req, res, next) => {
 
 linksRouter.use((req, res, next) => {
   console.log("A request is being made to /links");
-
-  res.send({ message: "hello from /links!" });
 });
 
 module.exports = linksRouter;
