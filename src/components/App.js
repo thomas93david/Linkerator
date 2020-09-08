@@ -4,8 +4,8 @@ import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import LinkListings from "./LinkListings";
 import "./App.css";
-import { getLinks } from "../api";
-import { getSomething } from "../api";
+// import { getLinks } from "../api";
+// import { getSomething } from "../api";
 
 import {
   BrowserRouter as Router,

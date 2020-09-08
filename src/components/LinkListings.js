@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./LinkListings.css";
 
 // import { getAllLinks } from "../../db";
-import { Button, Container, Col, Row, Form } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 // import {
 //   BrowserRouter as Router,
 //   Route,
@@ -11,53 +11,63 @@ import { Button, Container, Col, Row, Form } from "react-bootstrap";
 //   Redirect,
 // } from "react-router-dom";
 
-import { getLinks } from "../api";
-
+// import { getLinks } from "../api";
 import Links from "./Links";
 
-const LinkListings = ({ setPreview }) => {
-  const [id, setId] = useState("");
-  const [url, setUrl] = useState("");
-  const [tags, setTags] = useState("");
-  const [comment, setComment] = useState("");
-  // const data = getLinks();
-  // console.log(data);
-  // results = getLinks();
-  // console.log(results);
+const LinkListings = () => {
+  // const [id, setId] = useState("");
+  // const [url, setUrl] = useState("");
+  // const [tags, setTags] = useState("");
+  // const [comment, setComment] = useState("");
 
-  async function previewLinkResult(event) {
-    event.preventDefault();
+  const [urls, setUrls] = useState([]);
+  const dummyLinks = [
+    { link: "www.espn.com", clickCount: 1, comment: "Love watching sports" },
+    { link: "www.youtube.com", clickCount: 1, comment: "Stream every video!" },
+    { link: "www.hulu.com", clickCount: 1, comment: "Hulu has live sports" },
+    {
+      link: "www.fullstack.com",
+      clickCount: 1,
+      comment: "How should I react to this...",
+    },
+    {
+      link: "www.google.com",
+      clickCount: 1,
+      comment: "world domination....soon..",
+    },
+  ];
 
-    const dummyLinks = await getLinks({
-      id,
-      url,
-      tags,
-      comment,
-    });
-    setPreview(dummyLinks);
-  }
+  // async function previewLinkResult(event) {
+  //   event.preventDefault();
+
+  //   const dummyLinks = await getLinks({
+  //     id,
+  //     url,
+  //     tags,
+  //     comment,
+  //   });
+  //   setPreview(dummyLinks);
+  // }
 
   return (
     <div className="link-container">
       <Container
         style={{
-          width: "900px",
+          width: "auto",
           height: "700px",
           backgroundColor: "purple",
         }}
         fluid
       >
         <Row>
-          <Col>
-            <p>This is where we will filter and map the results </p>
-            {setPreview.map(({ id, url, tags, comment }) => (
-              <Links key={id} />
-            ))}
-          </Col>
+          {dummyLinks.map((url) => (
+            <Links
+              link={url.link}
+              comment={url.comment}
+              clickCount={url.clickCount}
+            />
+          ))}
         </Row>
-        <Form onSubmit={previewLinkResult}>
-          <Button type="submit"> Preview</Button>
-        </Form>
       </Container>
     </div>
   );

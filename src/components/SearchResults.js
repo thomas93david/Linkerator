@@ -2,13 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./SearchResults.css";
 
-import { Button, Card, Form, Col, Row } from "react-bootstrap";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { Button, Card, Form, Col } from "react-bootstrap";
 
 import { getSomething } from "../api";
 

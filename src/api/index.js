@@ -13,7 +13,16 @@ export async function getSomething() {
 export async function getLinks() {
   try {
     const { data } = await axios.get("/routes/links");
-    // console.log("Links are", data);
+    console.log("Links are", data);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function fetchQueryResults() {
+  try {
+    const { data } = await axios.get("/routes/links");
     return data;
   } catch (error) {
     throw error;
