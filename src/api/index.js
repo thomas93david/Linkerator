@@ -13,7 +13,7 @@ export async function getSomething() {
 export async function getLinks() {
   try {
     const { data } = await axios.get("/routes/links");
-    console.log("Links are", data);
+    // console.log("Links are", data);
     return data;
   } catch (error) {
     throw error;
