@@ -15,7 +15,7 @@ const SearchResults = ({ search, setSearchInput }) => {
     event.preventDefault();
     setSearchInput ()
   }
-  console.log (links);
+  console.log (links);    //test only remove later
   useEffect(() => {
     getLinks()
       .then((response) => {
