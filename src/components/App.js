@@ -4,8 +4,6 @@ import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import LinkListings from "./LinkListings";
 import "./App.css";
-// import { getLinks } from "../api";
-// import { getSomething } from "../api";
 
 import {
   BrowserRouter as Router,
@@ -16,7 +14,8 @@ import {
 
 const App = () => {
   const [search, setSearchInput] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState("");
+
   return (
     <Router>
       <div className="App">

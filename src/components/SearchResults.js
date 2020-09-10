@@ -6,13 +6,15 @@ import { Button, Card, Form, Col } from "react-bootstrap";
 
 import { getLinks } from "../api";
 
+
 const SearchResults = ({ search, setSearchInput }) => {
-  const [links, setLinks] = useState([]);
-  const [tags, setTags] = useState([]);
-  const [message, setMessage] = useState("");
+  const [links, setLinks] = useState("");
+  const [tags, setTags] = useState("");
+  const [comment, setComment] = useState("");
 
   const onSubmit = (event) => {
     event.preventDefault();
+
     setSearchInput ()
   }
   console.log (links);    //test only remove later
@@ -25,6 +27,10 @@ const SearchResults = ({ search, setSearchInput }) => {
         setMessage(error.message);
       });
   }, []);
+
+    setSearchInput(event.target.name);
+  };
+
 
   return (
     <div className="results">
