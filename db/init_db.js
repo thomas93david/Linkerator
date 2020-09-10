@@ -55,38 +55,43 @@ async function populateInitialData() {
     console.log("Entering initial data set for URL's (Links).");
     await createLink({
       url: "www.google.com",
-      clickCount: 1,
-      comment: "Some Comment 1",
+      clickCount: 11,
+      comment: "World-wide Domination is our goal",
     });
     await createLink({
       url: "www.espn.com",
-      clickCount: 1,
-      comment: "Some Comment 2",
+      clickCount: 21,
+      comment: "Main-stream sports",
     });
     await createLink({
       url: "www.cnn.com",
-      clickCount: 1,
-      comment: "Some Comment 1",
+      clickCount: 22,
+      comment: "News for you",
     });
     await createLink({
       url: "www.vox.com",
-      clickCount: 1,
-      comment: "Some Comment 1",
+      clickCount: 34,
+      comment: "Opinions for you",
     });
     await createLink({
       url: "www.duckduckgo.com",
-      clickCount: 1,
-      comment: "Some Comment 1",
+      clickCount: 10,
+      comment: "Privacy Search",
     });
     await createLink({
       url: "www.sport1.de",
-      clickCount: 1,
-      comment: "Some Comment 1",
+      clickCount: 41,
+      comment: "Bundesliga, Formel 1, Formula 1",
     });
     await createLink({
       url: "www.der-postillon.com",
-      clickCount: 1,
-      comment: "Some Comment 1",
+      clickCount: 52,
+      comment: "German version of The Onion",
+    });
+    await createLink({
+      url: "www.babylonbee.com",
+      clickCount: 35,
+      comment: "Satire and prophecy",
     });
     console.log("Initial Links created!");
   } catch (error) {
