@@ -4,27 +4,15 @@ import "./SearchResults.css";
 
 import { Button, Card, Form, Col } from "react-bootstrap";
 
-import { getSomething } from "../api";
-
 const SearchResults = ({ search, setSearchInput }) => {
-  const [links, setLinks] = useState([]);
-  const [tags, setTags] = useState([]);
-  const [message, setMessage] = useState("");
+  const [links, setLinks] = useState("");
+  const [tags, setTags] = useState("");
+  const [comment, setComment] = useState("");
 
   const onTagClick = (event) => {
     event.preventDefault();
     setSearchInput(event.target.name);
   };
-
-  useEffect(() => {
-    getSomething()
-      .then((response) => {
-        setLinks(response.allLinks);
-      })
-      .catch((error) => {
-        setMessage(error.message);
-      });
-  }, []);
 
   return (
     <div className="results">

@@ -6,31 +6,8 @@ import { Card, Form } from "react-bootstrap";
 
 import { fetchQueryResults } from "../api";
 
-const SearchBar = ({ setSearchInput }) => {
+const SearchBar = ({ search, setSearchInput }) => {
   const [queryString, setQueryString] = useState("");
-  // const [comments, setComments] = useState([]);
-  // const [tags, setTags] = useState([]);
-
-  // useEffect(() => {
-  //   Promise.all([
-  //     fetchAllTags(),
-  //     fetchAllComments()
-  //   ])
-  //   .then(([tags, comments]) => {
-  //     setTags(tags);
-  //     setComments(comments);
-  //   })
-  //   .catch(console.error);
-  // }, []);
-
-  // const urlNameChange = (event) => {
-  //   setSearchInput(event.target.value);
-  // };
-
-  // async function searchUrlResult(event) {
-  //   event.preventDefault();
-  //   setSearchInput(event.target.value);
-  // }
 
   return (
     <div className="link-search">
@@ -56,7 +33,7 @@ const SearchBar = ({ setSearchInput }) => {
         />
         <Card.Body>
           <Form
-            onChange={async (event) => {
+            onSubmit={async (event) => {
               event.preventDefault();
 
               try {
