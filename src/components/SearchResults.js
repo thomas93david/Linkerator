@@ -6,31 +6,10 @@ import { Button, Card, Form, Col } from "react-bootstrap";
 
 import { getLinks } from "../api";
 
-
-const SearchResults = ({ search, setSearchInput }) => {
-  const [links, setLinks] = useState("");
-  const [tags, setTags] = useState("");
+const SearchResults = ({ form, setForm }) => {
+  const [url, setUrl] = useState("");
   const [comment, setComment] = useState("");
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-
-    setSearchInput ()
-  }
-  console.log (links);    //test only remove later
-  useEffect(() => {
-    getLinks()
-      .then((response) => {
-        setLinks(response.allLinks);
-      })
-      .catch((error) => {
-        setMessage(error.message);
-      });
-  }, []);
-
-    setSearchInput(event.target.name);
-  };
-
+  const [tags, setTags] = useState("");
 
   return (
     <div className="results">
@@ -48,13 +27,27 @@ const SearchResults = ({ search, setSearchInput }) => {
             <Form>
               <Form.Row>
                 <Col xs={4}>
-                  <Form.Control placeholder="Url" />
+                  <Form.Control
+                    placeholder="url"
+                    name="url"
+                    id="select-url"
+                    value={url}
+                  />
                 </Col>
                 <Col>
-                  <Form.Control placeholder="Tags" />
+                  <Form.Control
+                    placeholder="tags"
+                    name="tags"
+                    id="select-tag"
+                    value={}
+                  />
                 </Col>
                 <Col xs={5}>
-                  <Form.Control placeholder="Comments" />
+                  <Form.Control
+                    placeholder="comments"
+                    name="comment"
+                    id="select-tag"
+                  />
                 </Col>
                 <Button variant="primary" size="sm">
                   Submit

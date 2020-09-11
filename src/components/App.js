@@ -4,24 +4,25 @@ import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import LinkListings from "./LinkListings";
 import "./App.css";
+// import axios from "axios";
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
-  const [search, setSearchInput] = useState("");
-  const [results, setResults] = useState("");
+  const [search, setSearchInput] = useState();
+  const [form, setForm] = useState("");
+  // const [url, setUrl] = useState([]);
+
+  // useEffect(() => {
+  //   getLinks();
+  // }, []);
 
   return (
     <Router>
       <div className="App">
         <SearchBar search={search} setSearchInput={setSearchInput} />
-        <SearchResults search={search} setSearchInput={setSearchInput} />
-        <LinkListings results={results} setResults={setResults} />
+        <SearchResults form={form} setForm={setForm} />
+        <LinkListings />
       </div>
     </Router>
   );

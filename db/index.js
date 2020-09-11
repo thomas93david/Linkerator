@@ -27,21 +27,32 @@ async function createLink({ url, clickCount, comment }) {
   }
 }
 
-async function createTag({ tagName }) {
+async function updateLink(id, fields = {}) {
+  // build the set string
+  const setString = Object.keys(fields)
+    .map((key, index) => `"${key}"=$${index + 1}`)
+    .join(", ");
+
+  // return early if this is called without fields
+  if (setString.length === 0) {
+    return;
+  }
+
   try {
     const {
-      rows: [tag],
+      rows: [results],
     } = await client.query(
       `
-    INSERT INTO tags ("tagName")
-    VALUES ($1)
-    RETURNING *;
+      UPDATE users
+      SET ${setString}
+      WHERE id=${id}
+      RETURNING *;
     `,
-      [tagName]
+      Object.values(fields)
     );
-    return tag;
+
+    return results;
   } catch (error) {
-    console.error("Tag creation failed!");
     throw error;
   }
 }
@@ -73,6 +84,25 @@ async function getAllLinks() {
   return links;
 }
 
+async function createTag({ tagName }) {
+  try {
+    const {
+      rows: [tag],
+    } = await client.query(
+      `
+    INSERT INTO tags ("tagName")
+    VALUES ($1)
+    RETURNING *;
+    `,
+      [tagName]
+    );
+    return tag;
+  } catch (error) {
+    console.error("Tag creation failed!");
+    throw error;
+  }
+}
+
 async function getTagById(tagId) {
   try {
     const {
@@ -86,6 +116,18 @@ async function getTagById(tagId) {
       [tagId]
     );
     return tag;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getAllTags() {
+  try {
+    const { rows: tags } = await client.query(`
+    SELECT *
+    FROM tags
+    `);
+    return tags;
   } catch (error) {
     throw error;
   }
@@ -114,7 +156,9 @@ async function addTagToLink({ urlId, tagId }) {
 module.exports = {
   client,
   createLink,
-  createTag,
-  addTagToLink,
+  updateLink,
   getAllLinks,
+  createTag,
+  getAllTags,
+  addTagToLink,
 };

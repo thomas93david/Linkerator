@@ -4,6 +4,7 @@ import "./LinkListings.css";
 import Links from "./Links";
 import { Container, Row } from "react-bootstrap";
 import axios from "axios";
+// import { getLinks } from "../api";
 
 const LinkListings = () => {
   const [url, setUrl] = useState([]);
@@ -38,6 +39,7 @@ const LinkListings = () => {
             <Links
               link={url.url}
               comment={url.comment}
+              // tags={url.tags}
               clickCount={url.clickCount}
             />
           ))}

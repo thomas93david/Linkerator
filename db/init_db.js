@@ -102,25 +102,25 @@ async function populateInitialData() {
     //now add some tags
     console.log("Creating some initial tags");
     await createTag({
-      tagName: "Tag 1",
+      tagName: "mature",
     });
     await createTag({
-      tagName: "Tag 2",
+      tagName: "high",
     });
     await createTag({
-      tagName: "Tag 3",
+      tagName: "tech",
     });
     await createTag({
-      tagName: "Tag 4",
+      tagName: "research",
     });
     await createTag({
-      tagName: "Tag 5",
+      tagName: "low",
     });
     await createTag({
-      tagName: "Tag 6",
+      tagName: "comedy",
     });
     await createTag({
-      tagName: "Tag 7",
+      tagName: "notes",
     });
     console.log("Initial Tags created!");
   } catch (error) {
