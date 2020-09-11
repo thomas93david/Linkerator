@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import LinkListings from "./LinkListings";
 import "./App.css";
 
-import {
+ import {
   BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+  // Route,
+  // Switch,
+  // Redirect,
+} from "react-router-dom"; 
 
 const App = () => {
   const [search, setSearchInput] = useState("");

@@ -1,27 +1,39 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./LinkListings.css";
+import { getLinks } from "../api";
 import Links from "./Links";
 import { Container, Row } from "react-bootstrap";
-import axios from "axios";
 
-const LinkListings = () => {
-  const [url, setUrl] = useState([]);
+
+// import { getAllLinks } from "../../db";
+
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Switch,
+//   Redirect,
+// } from "react-router-dom";
+
+// import { getLinks } from "../api";
+
+
+const LinkListing = () => {
+  //const SearchResults = ({ search, setSearchInput }) => {
+  const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    getLinks();
+    getLinks()
+      .then((response) => {
+        setLinks(response.allLinks);
+        // console.log ("Links inside of useEffect ", response.allLinks)
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
   }, []);
 
-  async function getLinks() {
-    try {
-      const { data } = await axios.get("/routes/links");
-      console.log(data);
-      setUrl(data.allLinks);
-      // return data;
-    } catch (error) {
-      throw error;
-    }
-  }
+
 
   return (
     <div className="link-container">
@@ -34,17 +46,17 @@ const LinkListings = () => {
         fluid
       >
         <Row>
-          {url.map((url) => (
-            <Links
-              link={url.url}
-              comment={url.comment}
-              clickCount={url.clickCount}
+          {links.map((link) => (
+            <Links 
+              key = {link.id}
+              link={link.url} 
+              comment={link.comment} 
+              clickCount={link.clickCount} 
             />
           ))}
         </Row>
       </Container>
     </div>
-  );
-};
+    );}
 
-export default LinkListings;
+  export default LinkListing;

@@ -8,15 +8,9 @@ import { getLinks } from "../api";
 
 
 const SearchResults = ({ search, setSearchInput }) => {
-  const [links, setLinks] = useState("");
-  const [tags, setTags] = useState("");
-  const [comment, setComment] = useState("");
+const [links, setLinks] = useState("");
 
-  const onSubmit = (event) => {
-    event.preventDefault();
 
-    setSearchInput ()
-  }
   console.log (links);    //test only remove later
   useEffect(() => {
     getLinks()
@@ -24,12 +18,12 @@ const SearchResults = ({ search, setSearchInput }) => {
         setLinks(response.allLinks);
       })
       .catch((error) => {
-        setMessage(error.message);
+        console.log(error.message);
       });
   }, []);
 
-    setSearchInput(event.target.name);
-  };
+
+
 
 
   return (
@@ -65,59 +59,8 @@ const SearchResults = ({ search, setSearchInput }) => {
         </Card>
       </div>
     </div>
-  );
-};
+  );}
 
-/* <div className="api-container">
-  {links
-    .filter((links) => {
-      const linksLowerCased = links.url.toLowerCase();
-      if (linksLowerCased.includes(search.toLowerCase())) {
-        return true;
-      }
-      const tagsInclude = links.tags.filter((tag) => {
-        const tagsLowerCased = tag.tags.toLowerCase();
-        if (tagsLowerCased.includes(search.toLowerCase())) {
-          return true;
-        } else {
-          return false;
-        }
-      });
-      if (tagsInclude.length > 0) {
-        return true;
-      }
-      return false;
-    })
 
-    .map((links, index) => (
-      <div key={index} className="ps">
-        <h3>
-          <p>
-            <a href={links.link} key={`${index}_link`} target="_new">
-              <button id="linkbutton">
-                <p>{links.link}</p>
-              </button>
-            </a>
-          </p>
-        </h3>
-        <p>Added on: {links.date}</p>
-        <p>Comments:{links.comment}</p>
-        <p>Number of clicks:{links.clicks}</p>
-        <div>
-          Tagged as:
-          {links.tags.map((tags, index) => (
-            <button
-              id="linktag"
-              key={index}
-              name={tags.name}
-              onClick={onTagClick}
-            >
-              {tags.name}
-            </button>
-          ))}{" "}
-        </div>
-      </div>
-    ))}{" "}
-</div>; */
 
 export default SearchResults;
