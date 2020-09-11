@@ -22,12 +22,11 @@ const LinkListing = () => {
   //const SearchResults = ({ search, setSearchInput }) => {
   const [links, setLinks] = useState([]);
 
-  console.log ("Link data into SearchResults ", links);    //test only remove later
   useEffect(() => {
     getLinks()
       .then((response) => {
         setLinks(response.allLinks);
-        console.log ("Links inside of useEffect ", response.allLinks)
+        // console.log ("Links inside of useEffect ", response.allLinks)
       })
       .catch((error) => {
         console.error(error.message);
