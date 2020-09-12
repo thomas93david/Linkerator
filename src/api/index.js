@@ -13,20 +13,16 @@ export async function getSomething() {
 export async function getLinks() {
   try {
     const { data } = await axios.get("/routes/links");
-
-    // console.log("Links are", data);
-
-    console.log(data.allLinks);
-
+    // console.log("This is hitting the API getLinks", data);
     return data;
   } catch (error) {
     throw error;
   }
 }
 
-export async function fetchQueryResults() {
+export async function getTags() {
   try {
-    const { data } = await axios.get("/routes/links");
+    const { data } = await axios.get("/routes/tags");
     return data;
   } catch (error) {
     throw error;
