@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import "./Links.css";
 
-const Links = ({ link, comment, clickCount }) => {
+const Links = ({ link, comment, clickCount, tags }) => {
   return (
     <div className="Links">
       <Card
@@ -18,6 +18,7 @@ const Links = ({ link, comment, clickCount }) => {
           <Card.Title>
             <h2>{link}</h2>
           </Card.Title>
+          <p>{tags}</p>
           <p>{comment}</p>
           <p>{clickCount}</p>
         </Card.Body>
