@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./SearchResults.css";
+import "./AddLink.css";
 
 import { Button, Card, Form, Col } from "react-bootstrap";
 
@@ -19,7 +19,6 @@ const SearchResults = ({ search, setSearchInput }) => {
         console.log(error.message);
       });
   }, []);
-
   return (
     <div className="results">
       <div className="Link-List">
