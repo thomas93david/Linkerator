@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SearchBar from "./SearchBar";
-import SearchResults from "./SearchResults";
+import AddLink from "./AddLink";
 import LinkListings from "./LinkListings";
 import "./App.css";
 
@@ -15,12 +15,13 @@ import "./App.css";
 const App = () => {
   const [search, setSearchInput] = useState("");
   const [results, setResults] = useState("");
+  const [newLink, setNewLink] = useState("");
 
   return (
     <Router>
       <div className="App">
         <SearchBar search={search} setSearchInput={setSearchInput} />
-        <SearchResults search={search} setSearchInput={setSearchInput} />
+        <AddLink newLink={newLink} setNewLink={setNewLink} />
         <LinkListings results={results} setResults={setResults} />
       </div>
     </Router>

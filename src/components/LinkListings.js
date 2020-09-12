@@ -5,36 +5,17 @@ import { getLinks } from "../api";
 import Links from "./Links";
 import { Container, Row } from "react-bootstrap";
 
-
-// import { getAllLinks } from "../../db";
-
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   Switch,
-//   Redirect,
-// } from "react-router-dom";
-
-// import { getLinks } from "../api";
-
-
 const LinkListing = () => {
-  //const SearchResults = ({ search, setSearchInput }) => {
   const [links, setLinks] = useState([]);
-
   useEffect(() => {
     getLinks()
       .then((response) => {
         setLinks(response.allLinks);
-        // console.log ("Links inside of useEffect ", response.allLinks)
       })
       .catch((error) => {
         console.error(error.message);
       });
   }, []);
-
-
-
   return (
     <div className="link-container">
       <Container
@@ -49,6 +30,7 @@ const LinkListing = () => {
           {links.map((link) => (
             <Links 
               key = {link.id}
+              // tags = {link.tags}
               link={link.url} 
               comment={link.comment} 
               clickCount={link.clickCount} 

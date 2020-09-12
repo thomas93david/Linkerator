@@ -1,5 +1,5 @@
 const linksRouter = require("express").Router();
-const { getAllLinks } = require("../db");
+const { getAllLinks, createLink } = require("../db");
 
 linksRouter.get("/", async (req, res, next) => {
   try {
@@ -11,6 +11,7 @@ linksRouter.get("/", async (req, res, next) => {
     next({ name, message });
   }
 });
+
 
 linksRouter.use((req, res, next) => {
   console.log("A request is being made to /links");

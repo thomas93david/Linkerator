@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./SearchResults.css";
+import "./AddLink.css";
 
 import { Button, Card, Form, Col } from "react-bootstrap";
 
@@ -8,10 +8,8 @@ import { getLinks } from "../api";
 
 
 const SearchResults = ({ search, setSearchInput }) => {
-const [links, setLinks] = useState("");
-
-
-  console.log (links);    //test only remove later
+const [Links, setLinks] = useState("");
+  console.log (Links);    //test only remove later
   useEffect(() => {
     getLinks()
       .then((response) => {
@@ -21,11 +19,6 @@ const [links, setLinks] = useState("");
         console.log(error.message);
       });
   }, []);
-
-
-
-
-
   return (
     <div className="results">
       <div className="Link-List">
@@ -60,7 +53,6 @@ const [links, setLinks] = useState("");
       </div>
     </div>
   );}
-
 
 
 export default SearchResults;
