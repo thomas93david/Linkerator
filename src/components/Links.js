@@ -3,15 +3,14 @@ import { Card } from "react-bootstrap";
 import "./Links.css";
 
 const Links = ({ link, comment, date, clickCount, tags }) => {
-  console.log(tags);
   return (
     <div className="Links">
       <Card
         className="text-center"
         style={{
           margin: "9px",
-          width: "250px",
-          height: "200px",
+          width: "300px",
+          height: "250px",
           color: "green",
         }}
       >

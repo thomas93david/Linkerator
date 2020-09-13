@@ -21,7 +21,6 @@ const LinkListing = ({ createdLink }) => {
   useEffect(() => {
     setFilteredLinks(
       allLinksData.filter((link) => {
-        console.log(link);
         return (
           link.url.toLowerCase().includes(search.toLowerCase()) ||
           link.tags.filter((tag) => {
@@ -64,8 +63,11 @@ const LinkListing = ({ createdLink }) => {
           </form>
         </Card.Body>
       </Card>
+
       <Container
         style={{
+          display: "flex",
+          justifyContent: "center",
           width: "auto",
           height: "700px",
         }}
