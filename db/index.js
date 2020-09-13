@@ -7,22 +7,23 @@ const client = new Client(DB_URL);
 
 // DATABASE METHODS
 
-async function createLink({ url, clickCount, comment }) {
+async function createLink({ url, date, comment, tags = [] }) {
   try {
+    const tagResults = await Promise.all(tags.map((tag) => createTag(tag)));
     const {
-      rows: [link],
+      rows: [result],
     } = await client.query(
       `
-    INSERT INTO links (url, "clickCount", comment, "dateShared")
-    VALUES ($1, $2, $3, NOW())
-    ON CONFLICT (url) DO NOTHING
-    RETURNING *;
+      INSERT INTO links(url, "date", comment)
+      VALUES ($1, $2, $3)
+      RETURNING *;
     `,
-      [url, clickCount, comment]
+      [url, date, comment]
     );
-    return link;
+    await Promise.all(tagResults.map(({ id }) => createTagLink(result.id, id)));
+    result.tags = tagResults;
+    return result;
   } catch (error) {
-    console.error("Creation of new link failed!");
     throw error;
   }
 }
@@ -46,10 +47,47 @@ async function createTag({ tagName }) {
   }
 }
 
+async function createTagLink(linkId, tagId) {
+  try {
+    const {
+      rows: [result],
+    } = await client.query(
+      `
+            INSERT INTO link_tag("urlId", "tagId")
+            VALUES ($1, $2)
+            RETURNING *;
+            `,
+      [linkId, tagId]
+    );
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getLinkByTagName(tagName) {
+  try {
+    const { rows: urlId } = await client.query(
+      `
+      SELECT url.id
+      FROM links
+      JOIN post_tags ON posts.id=post_tags."postId"
+      JOIN tags ON tags.id=post_tags."tagId"
+      WHERE tags.name=$1;
+    `,
+      [tagName]
+    );
+
+    return await Promise.all(urlId.map((link) => getLinkById(url.id)));
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function getAllLinks() {
   console.log("getAllLinks");
   const { rows } = await client.query(
-    `SELECT id, url, "clickCount", comment, "dateShared" 
+    `SELECT id, url, "clickCount", comment, "date" 
     FROM links;
   `
   );
@@ -90,6 +128,18 @@ async function getTagById(tagId) {
     throw error;
   }
 }
+async function getAllTags() {
+  try {
+    const { rows: tags } = await client.query(`
+      SELECT *
+      FROM tags;
+    `);
+
+    return tags;
+  } catch (error) {
+    throw error;
+  }
+}
 
 async function addTagToLink({ urlId, tagId }) {
   try {
@@ -115,6 +165,10 @@ module.exports = {
   client,
   createLink,
   createTag,
+  createTagLink,
+  getAllTags,
+  getLinkByTagName,
+  getTagById,
   addTagToLink,
   getAllLinks,
 };

@@ -9,15 +9,6 @@ export async function getLinks() {
   }
 }
 
-export async function fetchQueryResults() {
-  try {
-    const { data } = await axios.get("/routes/links");
-    return data;
-  } catch (error) {
-    throw error;
-  }
-}
-
 export async function getTags() {
   try {
     const { data } = await axios.get("/routes/tags");
@@ -27,9 +18,14 @@ export async function getTags() {
   }
 }
 
-export async function addLink() {
+export async function createLink(url, date, comment, tags) {
   try {
-    const { data } = await axios.post("/routes/links");
+    const { data } = await axios.post("/routes/links", {
+      url,
+      date,
+      comment,
+      tags,
+    });
     return data;
   } catch (error) {
     throw error;

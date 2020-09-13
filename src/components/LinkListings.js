@@ -1,34 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./LinkListings.css";
-import { getLinks, getTags } from "../api";
 import Links from "./Links";
 import { Container, Row, Card } from "react-bootstrap";
-import axios from "axios";
+import { getLinks } from "../api";
 
-const LinkListing = () => {
+const LinkListing = ({ createdLink }) => {
   const [allLinksData, setAllLinksData] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredLinks, setFilteredLinks] = useState([]);
 
-  // import Links from routes/links
-  async function getLinks() {
-    try {
-      const { data } = await axios.get("/routes/links");
-      setAllLinksData(data.allLinks);
-    } catch (error) {
-      throw error;
-    }
-  }
-
   useEffect(() => {
-    getLinks();
-  }, []);
+    async function fetchData() {
+      const result = await getLinks();
+      setAllLinksData(result.allLinks);
+    }
+    fetchData();
+  }, [createdLink]);
 
   useEffect(() => {
     setFilteredLinks(
       allLinksData.filter((link) => {
-        return link.url.toLowerCase().includes(search.toLowerCase());
+        console.log(link);
+        return (
+          link.url.toLowerCase().includes(search.toLowerCase()) ||
+          link.tags.filter((tag) => {
+            return tag.tagName.toLowerCase().includes(search.toLowerCase());
+          }).length > 0
+        );
       })
     );
   }, [search, allLinksData]);
@@ -78,6 +77,7 @@ const LinkListing = () => {
               key={link.id}
               link={link.url}
               comment={link.comment}
+              tags={link.tags}
               clickCount={link.clickCount}
             />
           ))}
