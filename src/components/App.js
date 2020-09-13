@@ -9,10 +9,12 @@ const App = () => {
   const [createdLink, setCreatedLink] = useState({});
 
   return (
+
     <div className="App">
       <AddLink setCreatedLink={setCreatedLink} />
       <LinkListings createdLink={createdLink} />
     </div>
+
   );
 };
 
