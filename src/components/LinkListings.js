@@ -32,6 +32,8 @@ const LinkListing = ({ createdLink }) => {
     );
   }, [search, allLinksData]);
 
+
+
   return (
     <div className="link-container">
       <Card
@@ -78,6 +80,7 @@ const LinkListing = ({ createdLink }) => {
               link={link.url}
               comment={link.comment}
               tags={link.tags}
+              date={link.date}
               clickCount={link.clickCount}
             />
           ))}

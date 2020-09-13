@@ -7,7 +7,7 @@ const client = new Client(DB_URL);
 
 // DATABASE METHODS
 
-async function createLink({ url, date, comment, tags = [] }) {
+async function createLink({ url, date, comment,clickCount, tags = [] }) {
   try {
     const tagResults = await Promise.all(
       tags.map((tag) => createTag(tag.tagName))
@@ -16,11 +16,11 @@ async function createLink({ url, date, comment, tags = [] }) {
       rows: [result],
     } = await client.query(
       `
-      INSERT INTO links(url, "date", comment)
-      VALUES ($1, $2, $3)
+      INSERT INTO links(url, date, comment, "clickCount")
+      VALUES ($1, $2, $3, $4)
       RETURNING *;
     `,
-      [url, date, comment]
+      [url, date, comment, clickCount]
     );
     await Promise.all(tagResults.map(({ id }) => createTagLink(result.id, id)));
     result.tags = tagResults;
