@@ -102,25 +102,25 @@ async function populateInitialData() {
     //now add some tags
     console.log("Creating some initial tags");
     await createTag({
-      tagName: "Tag 1",
+      tagName: "sports",
     });
     await createTag({
-      tagName: "Tag 2",
+      tagName: "news",
     });
     await createTag({
-      tagName: "Tag 3",
+      tagName: "search",
     });
     await createTag({
-      tagName: "Tag 4",
+      tagName: "opinion",
     });
     await createTag({
-      tagName: "Tag 5",
+      tagName: "humor",
     });
     await createTag({
-      tagName: "Tag 6",
+      tagName: "german",
     });
     await createTag({
-      tagName: "Tag 7",
+      tagName: "entertainment",
     });
     console.log("Initial Tags created!");
   } catch (error) {
@@ -132,39 +132,79 @@ async function populateInitialData() {
     console.log("Adding tags to links");
     await addTagToLink({
       urlId: 1,
-      tagId: 1,
+      tagId: 3,
     });
     await addTagToLink({
       urlId: 1,
       tagId: 2,
     });
     await addTagToLink({
-      urlId: 1,
-      tagId: 1,
-    });
-    await addTagToLink({
       urlId: 2,
       tagId: 1,
     });
     await addTagToLink({
-      urlId: 3,
-      tagId: 1,
-    });
-    await addTagToLink({
-      urlId: 1,
+      urlId: 2,
       tagId: 4,
     });
     await addTagToLink({
-      urlId: 1,
-      tagId: 5,
+      urlId: 2,
+      tagId: 7,
     });
     await addTagToLink({
-      urlId: 1,
+      urlId: 3,
+      tagId: 2,
+    });
+    await addTagToLink({
+      urlId: 3,
+      tagId: 4,
+    });
+    await addTagToLink({
+      urlId: 4,
+      tagId: 2,
+    });
+    await addTagToLink({
+      urlId: 4,
+      tagId: 1,
+    });
+    await addTagToLink({
+      urlId: 4,
+      tagId: 4,
+    });
+    await addTagToLink({
+      urlId: 4,
+      tagId: 7,
+    });
+    await addTagToLink({
+      urlId: 5,
+      tagId: 3,
+    });
+    await addTagToLink({
+      urlId: 6,
+      tagId: 1,
+    });
+    await addTagToLink({
+      urlId: 6,
       tagId: 6,
     });
     await addTagToLink({
+      urlId: 6,
+      tagId: 7,
+    });
+    await addTagToLink({
       urlId: 7,
-      tagId: 1,
+      tagId: 5,
+    });
+    await addTagToLink({
+      urlId: 7,
+      tagId: 7,
+    });
+    await addTagToLink({
+      urlId: 8,
+      tagId: 5,
+    });
+    await addTagToLink({
+      urlId: 8,
+      tagId: 7,
     });
     console.log("Tags added to links!");
   } catch (error) {
