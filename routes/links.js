@@ -32,6 +32,7 @@ linksRouter.post("/", async (req, res, next) => {
 linksRouter.get("/", async (req, res, next) => {
   try {
     const allLinks = await getAllLinks();
+    console.log("Not hitting after this");
     res.send({
       allLinks,
     });
