@@ -30,7 +30,7 @@ async function buildTables() {
         url VARCHAR (255) UNIQUE NOT NULL,
         "clickCount" INTEGER,
         comment TEXT,
-        date VARCHAR NOT NULL 
+        date DATE NOT NULL 
       );
       CREATE TABLE tags (
         id SERIAL PRIMARY KEY,
@@ -109,27 +109,13 @@ async function populateInitialData() {
   try {
     //now add some tags
     console.log("Creating some initial tags");
-    await createTag({
-      tagName: "sports",
-    });
-    await createTag({
-      tagName: "news",
-    });
-    await createTag({
-      tagName: "search",
-    });
-    await createTag({
-      tagName: "opinion",
-    });
-    await createTag({
-      tagName: "humor",
-    });
-    await createTag({
-      tagName: "german",
-    });
-    await createTag({
-      tagName: "entertainment",
-    });
+    await createTag("sports");
+    await createTag("news");
+    await createTag("search");
+    await createTag("opinion");
+    await createTag("humor");
+    await createTag("german");
+    await createTag("entertainment");
     console.log("Initial Tags created!");
   } catch (error) {
     console.error("Error creating initial Tags!");

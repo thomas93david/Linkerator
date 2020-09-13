@@ -22,6 +22,7 @@ async function createLink({ url, date, comment, clickCount, tags = [] }) {
     `,
       [url, date, comment, clickCount]
     );
+
     await Promise.all(tagResults.map(({ id }) => createTagLink(result.id, id)));
     result.tags = tagResults;
     return result;
@@ -30,7 +31,8 @@ async function createLink({ url, date, comment, clickCount, tags = [] }) {
   }
 }
 
-async function createTag({ tagName }) {
+async function createTag(tagNam) {
+  console.log("Running db/index line35");
   try {
     const {
       rows: [tag],
@@ -40,8 +42,9 @@ async function createTag({ tagName }) {
     VALUES ($1)
     RETURNING *;
     `,
-      [tagName]
+      [tagNam]
     );
+    console.log("Results from line 35", tagNam);
     return tag;
   } catch (error) {
     console.error("Tag creation failed!");
@@ -49,7 +52,7 @@ async function createTag({ tagName }) {
   }
 }
 
-async function createTagLink(linkId, tagId) {
+async function createTagLink(urlId, tagId) {
   try {
     const {
       rows: [result],
@@ -59,7 +62,7 @@ async function createTagLink(linkId, tagId) {
             VALUES ($1, $2)
             RETURNING *;
             `,
-      [linkId, tagId]
+      [urlId, tagId]
     );
     return result;
   } catch (error) {

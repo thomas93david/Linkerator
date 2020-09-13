@@ -13,6 +13,9 @@ const AddLink = ({ setCreatedLink }) => {
   async function handleSubmit() {
     await createLink(link, new Date(), comment, tags);
     setCreatedLink(link);
+    setLink("");
+    setComment("");
+    setTags("");
   }
   const updateLink = (event) => {
     setLink(event.target.value);

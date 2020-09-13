@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import "./Links.css";
 
 const Links = ({ link, comment, date, clickCount, tags }) => {
+  console.log(tags);
   return (
     <div className="Links">
       <Card
