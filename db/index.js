@@ -9,7 +9,9 @@ const client = new Client(DB_URL);
 
 async function createLink({ url, date, comment, tags = [] }) {
   try {
-    const tagResults = await Promise.all(tags.map((tag) => createTag(tag)));
+    const tagResults = await Promise.all(
+      tags.map((tag) => createTag(tag.tagName))
+    );
     const {
       rows: [result],
     } = await client.query(

@@ -34,7 +34,7 @@ async function buildTables() {
       );
       CREATE TABLE tags (
         id SERIAL PRIMARY KEY,
-        "tagName" varchar (255) UNIQUE
+        "tagName" varchar (255) UNIQUE 
       );
       CREATE TABLE link_tag (
         id SERIAL PRIMARY KEY,
