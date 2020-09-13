@@ -8,7 +8,7 @@ import { Button, Card, Form, Col } from "react-bootstrap";
 const AddLink = ({ setCreatedLink }) => {
   const [link, setLink] = useState("");
   const [comment, setComment] = useState("");
-  const [tags, setTags] = useState("");
+  const [tags, setTags] = useState([]);
 
   async function handleSubmit() {
     await createLink(link, new Date(), comment, tags);

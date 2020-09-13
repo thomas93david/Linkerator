@@ -7,11 +7,15 @@ const client = new Client(DB_URL);
 
 // DATABASE METHODS
 
-async function createLink({ url, date, comment,clickCount, tags = [] }) {
+async function createLink({ url, date, comment, clickCount, tags = [] }) {
+
+  const tagResults = await Promise.all(
+    tags.map((tagName) => createTag(tagName))
+  );
+  console.log (tagResults);
+
+
   try {
-    const tagResults = await Promise.all(
-      tags.map((tagName) => createTag(tagName))
-    );
     const {
       rows: [result],
     } = await client.query(
@@ -31,6 +35,7 @@ async function createLink({ url, date, comment,clickCount, tags = [] }) {
 }
 
 async function createTag({ tagName }) {
+  console.log (tagName);
   try {
     const {
       rows: [tag],

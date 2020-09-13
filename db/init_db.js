@@ -30,11 +30,11 @@ async function buildTables() {
         url VARCHAR (255) UNIQUE NOT NULL,
         "clickCount" INTEGER,
         comment TEXT,
-        date VARCHAR NOT NULL 
+        date DATE DEFAULT CURRENT_DATE 
       );
       CREATE TABLE tags (
         id SERIAL PRIMARY KEY,
-        "tagName" varchar (255) UNIQUE 
+        "tagName" varchar (255)
       );
       CREATE TABLE link_tag (
         id SERIAL PRIMARY KEY,
