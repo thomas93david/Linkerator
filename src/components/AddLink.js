@@ -38,6 +38,8 @@ const AddLink = ({ setCreatedLink }) => {
           }}
         >
           <Card.Body>
+            <Card.Title style={{ fontSize: "24px" }}> Welcome to</Card.Title>
+
             <Card.Title style={{ fontSize: "36px" }}> Link-it!</Card.Title>
             <Form>
               <Form.Row>
