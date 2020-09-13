@@ -40,7 +40,15 @@ const AddLink = ({ setCreatedLink }) => {
           <Card.Body>
             <Card.Title style={{ fontSize: "24px" }}> Welcome to</Card.Title>
 
-            <Card.Title style={{ fontSize: "36px" }}> Link-it!</Card.Title>
+            <Card.Title style={{ fontSize: "36px" }}>
+              {" "}
+              Alpha-Linkerator!
+            </Card.Title>
+            <p>
+              Simply fill out the form below with your favorite links and see
+              your results in the cards
+            </p>
+            <p>FYI - seperate each tag with a space </p>
             <Form>
               <Form.Row>
                 <Col xs={4}>

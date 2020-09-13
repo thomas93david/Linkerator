@@ -1,6 +1,5 @@
 .App {
   display: flex;
-  /* justify-content: space-around; */
   flex-direction: column;
   background-color: #3d6cb9;
   height: auto;

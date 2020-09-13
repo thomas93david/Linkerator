@@ -31,30 +31,22 @@ const LinkListing = ({ createdLink }) => {
     );
   }, [search, allLinksData]);
 
-
-
   return (
     <div className="link-container">
       <Card
         style={{
           color: "black",
           backgroundColor: "#00fff0",
-          width: "600px",
+          width: "auto",
+          height: "500px",
         }}
       >
-        <Card.Title
-          style={{
-            fontSize: "36px",
-            paddingTop: "9px",
-          }}
-        >
-          <h1>Linkerator</h1>
-        </Card.Title>
         <Card.Img
           style={{ padding: "18px" }}
-          src="https://picsum.photos/600/150"
+          src="https://picsum.photos/850/500"
         />
         <Card.Body>
+          <h2>Search through the results below!</h2>
           <form className="search-form">
             <input
               className="search-bar"
@@ -66,15 +58,7 @@ const LinkListing = ({ createdLink }) => {
         </Card.Body>
       </Card>
 
-      <Container
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          width: "auto",
-          height: "700px",
-        }}
-        fluid
-      >
+      <Container style={{}}>
         <Row>
           {filteredLinks.map((link) => (
             <Links

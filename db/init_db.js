@@ -63,43 +63,43 @@ async function populateInitialData() {
       url: "www.espn.com",
       clickCount: 21,
       comment: "Main-stream sports",
-      date: "9/12/2020",
+      date: "9/04/2020",
     });
     await createLink({
       url: "www.cnn.com",
       clickCount: 22,
       comment: "News for you",
-      date: "9/12/2020",
+      date: "8/01/2020",
     });
     await createLink({
       url: "www.vox.com",
       clickCount: 34,
       comment: "Opinions for you",
-      date: "9/12/2020",
+      date: "8/25/2020",
     });
     await createLink({
       url: "www.duckduckgo.com",
       clickCount: 10,
       comment: "Privacy Search",
-      date: "9/12/2020",
+      date: "9/10/2020",
     });
     await createLink({
       url: "www.sport1.de",
       clickCount: 41,
       comment: "Bundesliga, Formel 1, Formula 1",
-      date: "9/12/2020",
+      date: "8/29/2020",
     });
     await createLink({
       url: "www.der-postillon.com",
       clickCount: 52,
       comment: "German version of The Onion",
-      date: "9/12/2020",
+      date: "9/03/2020",
     });
     await createLink({
       url: "www.babylonbee.com",
       clickCount: 35,
       comment: "Satire and prophecy",
-      date: "9/12/2020",
+      date: "9/02/2020",
     });
     console.log("Initial Links created!");
   } catch (error) {

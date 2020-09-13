@@ -9,19 +9,18 @@ const Links = ({ link, comment, date, clickCount, tags }) => {
         className="text-center"
         style={{
           margin: "9px",
-          width: "300px",
+          width: "275px",
           height: "250px",
-          color: "green",
+          color: "black",
+          backgroundColor: "#ffd717",
         }}
       >
         <Card.Body>
-          <Card.Title>
-            <h2>{link}</h2>
-          </Card.Title>
-          <p>{date}</p>
-          <p>{comment}</p>
-          <p>{tags.map((tag) => tag.tagName).join(", ")}</p>
-          <p>{clickCount}</p>
+          <p>Link: {link}</p>
+          <p>Submit-Date: {date}</p>
+          <p>Comment: {comment}</p>
+          <p>Tags: {tags.map((tag) => tag.tagName).join(", ")}</p>
+          <p>Click-Count: {clickCount}</p>
         </Card.Body>
       </Card>
     </div>
