@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AddLink.css";
+import { createLink } from "../api";
 
 import { Button, Card, Form, Col } from "react-bootstrap";
 
-import { getLinks } from "../api";
+const AddLink = ({ setCreatedLink }) => {
+  const [link, setLink] = useState("");
+  const [comment, setComment] = useState("");
+  const [tags, setTags] = useState("");
 
-const SearchResults = ({ search, setSearchInput }) => {
-  const [links, setLinks] = useState("");
+  async function handleSubmit() {
+    await createLink(link, new Date(), comment, tags);
+    setCreatedLink(link);
+  }
+  const updateLink = (event) => {
+    setLink(event.target.value);
+  };
 
-  // console.log (links);    //test only remove later
-  useEffect(() => {
-    getLinks()
-      .then((response) => {
-        setLinks(response.allLinks);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, []);
+  const updateComment = (event) => {
+    setComment(event.target.value);
+  };
+
+  const updateTags = (event) => {
+    setTags(event.target.value);
+  };
+
   return (
     <div className="results">
       <div className="Link-List">
@@ -35,15 +42,27 @@ const SearchResults = ({ search, setSearchInput }) => {
             <Form>
               <Form.Row>
                 <Col xs={4}>
-                  <Form.Control placeholder="Url" />
+                  <Form.Control
+                    placeholder="url"
+                    value={link}
+                    onChange={updateLink}
+                  />
                 </Col>
                 <Col>
-                  <Form.Control placeholder="Tags" />
+                  <Form.Control
+                    placeholder="Tags"
+                    value={tags}
+                    onChange={updateTags}
+                  />
                 </Col>
                 <Col xs={5}>
-                  <Form.Control placeholder="Comments" />
+                  <Form.Control
+                    placeholder="Comments"
+                    value={comment}
+                    onChange={updateComment}
+                  />
                 </Col>
-                <Button variant="primary" size="sm">
+                <Button variant="primary" size="sm" onClick={handleSubmit}>
                   Submit
                 </Button>
               </Form.Row>
@@ -55,4 +74,4 @@ const SearchResults = ({ search, setSearchInput }) => {
   );
 };
 
-export default SearchResults;
+export default AddLink;

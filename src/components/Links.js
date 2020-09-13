@@ -2,7 +2,8 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import "./Links.css";
 
-const Links = ({ link, comment, clickCount, tags }) => {
+const Links = ({ link, comment, date, clickCount, tags }) => {
+  console.log(tags);
   return (
     <div className="Links">
       <Card
@@ -18,8 +19,9 @@ const Links = ({ link, comment, clickCount, tags }) => {
           <Card.Title>
             <h2>{link}</h2>
           </Card.Title>
-          <p>{tags}</p>
+          <p>{date}</p>
           <p>{comment}</p>
+          <p>{tags.map((tag) => tag.tagName).join(", ")}</p>
           <p>{clickCount}</p>
         </Card.Body>
       </Card>
